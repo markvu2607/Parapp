@@ -1,14 +1,17 @@
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { FC } from "react";
 
-export default function Home() {
+type Props = {};
+
+const DashboardPage: FC<Props> = () => {
   return (
     <main>
-      <SignedOut>
-        <SignInButton />
-      </SignedOut>
+      Dashboard
       <SignedIn>
         <UserButton />
       </SignedIn>
     </main>
   );
-}
+};
+
+export default DashboardPage;
