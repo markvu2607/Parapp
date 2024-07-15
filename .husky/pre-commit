@@ -1,0 +1,4 @@
+#! bin/sh
+
+# add test
+npm run lint
