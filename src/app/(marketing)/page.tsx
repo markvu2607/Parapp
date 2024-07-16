@@ -4,7 +4,7 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 import { FC } from "react";
 
-import { ArrowRight } from "@/components/icons";
+import { ArrowRightIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 
 type Props = {};
@@ -23,7 +23,7 @@ const MarketingPage: FC<Props> = () => {
             <SignInButton>
               <Button className="flex justify-center gap-x-2">
                 <h3>Get Parapp free</h3>
-                <ArrowRight className="size-4 svg-animate" />
+                <ArrowRightIcon className="size-4 svg-animate" />
               </Button>
             </SignInButton>
           </SignedOut>
