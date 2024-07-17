@@ -8,10 +8,22 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
+import { DocumentList } from "./_components/document-list";
+import { createClient } from "@/lib/supabase/server";
+import { auth } from "@clerk/nextjs/server";
+import UserService from "@/services/user.service";
 
 type Props = {};
 
-const DashboardPage: FC<Props> = () => {
+const DashboardPage: FC<Props> = async () => {
+  const { userId } = auth();
+  const id = await UserService.getUserByClerkId(userId!);
+  const supabase = createClient();
+  if (!id) {
+    return null;
+  }
+  const documents = await supabase.from("documents").select().eq("user_id", id);
+
   return (
     <main className="h-screen">
       <ResizablePanelGroup direction="horizontal">
@@ -26,7 +38,7 @@ const DashboardPage: FC<Props> = () => {
           </div>
           <div className="flex-1">
             {/* TODO: implement menu */}
-            Menu here
+            <DocumentList documents={documents.data!} />
           </div>
           <div className="flex bg-secondary px-2 py-1">
             <Button variant="ghost" className="flex-1 gap-1">
