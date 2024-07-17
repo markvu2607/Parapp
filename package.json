@@ -10,11 +10,14 @@
     "shadcn:add": "npx shadcn-ui@latest add",
     "db:generate": "npx drizzle-kit generate --name=$npm_config_name",
     "db:migrate": "npx drizzle-kit migrate",
-    "prepare": "husky"
+    "prepare": "husky",
+    "update-types": "npx supabase gen types --lang=typescript --project-id=$npm_config_ref --schema public > src/types/supabase.d.ts"
   },
   "dependencies": {
     "@clerk/nextjs": "^5.2.3",
     "@radix-ui/react-slot": "^1.1.0",
+    "@supabase/ssr": "^0.4.0",
+    "@supabase/supabase-js": "^2.44.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "drizzle-orm": "^0.32.0",

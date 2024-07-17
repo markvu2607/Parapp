@@ -2,7 +2,8 @@ import { UserJSON, WebhookEvent } from "@clerk/nextjs/server";
 import { headers } from "next/headers";
 import { Webhook } from "svix";
 
-import envVars from "@/configs/envVars";
+import envVars from "@/configs/env/server";
+import { generateId } from "@/lib/utils";
 import UserService from "@/services/user.service";
 
 const CLERK_EVENT = {
@@ -57,9 +58,10 @@ export async function POST(req: Request) {
       const { id, first_name, last_name, image_url, email_addresses } =
         evt.data as UserJSON;
       await UserService.createUser({
-        clerkId: id,
-        firstName: first_name,
-        lastName: last_name,
+        id: generateId(),
+        clerk_id: id,
+        first_name: first_name,
+        last_name: last_name,
         avatar: image_url,
         email: email_addresses[0].email_address,
       });
