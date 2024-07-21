@@ -12,18 +12,21 @@ export type Database = {
       documents: {
         Row: {
           content: string | null
+          icon: string | null
           id: number
           title: string | null
           user_id: string | null
         }
         Insert: {
           content?: string | null
+          icon?: string | null
           id?: number
           title?: string | null
           user_id?: string | null
         }
         Update: {
           content?: string | null
+          icon?: string | null
           id?: number
           title?: string | null
           user_id?: string | null
