@@ -2,11 +2,10 @@ import { SignedIn, UserButton } from "@clerk/nextjs";
 import { auth } from "@clerk/nextjs/server";
 import { FC } from "react";
 
-import { SettingIcon } from "@/components/icons";
-import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/server";
 import UserService from "@/services/user.service";
 import { DocumentManagement } from "./document-management";
+import { Setting } from "./setting";
 
 type Props = {};
 
@@ -32,10 +31,7 @@ export const Sidebar: FC<Props> = async (props) => {
         <DocumentManagement documents={documents.data!} />
       </div>
       <div className="flex bg-secondary px-2 py-1">
-        <Button variant="ghost" className="flex-1 gap-1">
-          <SettingIcon className="size-4" />
-          <p>Settings</p>
-        </Button>
+        <Setting />
         <SignedIn>
           <div className="flex items-center">
             <UserButton />
