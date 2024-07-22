@@ -22,6 +22,21 @@ class DocumentService {
     }
     return data;
   }
+
+  public static async updateDocument(
+    id: Tables<"documents">["id"],
+    document: Partial<Tables<"documents">>
+  ) {
+    const supabase = createClient();
+    const { error, data } = await supabase
+      .from("documents")
+      .update(document)
+      .eq("id", id);
+    if (error) {
+      throw error;
+    }
+    return data;
+  }
 }
 
 export default DocumentService;
