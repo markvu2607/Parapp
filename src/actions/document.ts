@@ -12,6 +12,7 @@ export const createNewDocument = async () => {
     title: "Untitled",
     content: "",
     user_id: id,
+    created_at: new Date().toISOString(),
   });
   return data;
 };

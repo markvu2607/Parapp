@@ -12,6 +12,7 @@ export type Database = {
       documents: {
         Row: {
           content: string | null
+          created_at: string
           icon: string | null
           id: number
           title: string | null
@@ -19,6 +20,7 @@ export type Database = {
         }
         Insert: {
           content?: string | null
+          created_at: string
           icon?: string | null
           id?: number
           title?: string | null
@@ -26,6 +28,7 @@ export type Database = {
         }
         Update: {
           content?: string | null
+          created_at?: string
           icon?: string | null
           id?: number
           title?: string | null
