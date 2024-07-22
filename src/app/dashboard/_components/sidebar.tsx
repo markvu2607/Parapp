@@ -17,7 +17,11 @@ export const Sidebar: FC<Props> = async (props) => {
   if (!id) {
     return null;
   }
-  const documents = await supabase.from("documents").select().eq("user_id", id);
+  const documents = await supabase
+    .from("documents")
+    .select()
+    .eq("user_id", id)
+    .order("created_at", { ascending: true });
 
   return (
     <aside className="flex flex-col h-full">

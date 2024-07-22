@@ -4,6 +4,7 @@ import { EmojiClickData } from "emoji-picker-react";
 import { FC, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { useDebounceCallback } from "usehooks-ts";
+import { isEmpty } from "lodash";
 
 import { deleteDocument, editDocument } from "@/actions/document";
 import { Input } from "@/components/ui/input";
@@ -22,7 +23,7 @@ export const DocumentItem: FC<Props> = ({ document }) => {
   const handleChangeTitle = useDebounceCallback<(title: string) => void>(
     // TODO: implement useOptimistic to optimize ui when update title.
     (title: string) => {
-      editDocument(document.id, { title });
+      editDocument(document.id, { title: isEmpty(title) ? "Untitled" : title });
     },
     300
   );
@@ -60,7 +61,11 @@ export const DocumentItem: FC<Props> = ({ document }) => {
             className="h-8 outline-none"
             type="text"
             placeholder="Untitled"
-            defaultValue={document.title || ""}
+            defaultValue={
+              !document.title || document.title === "Untitled"
+                ? ""
+                : document.title
+            }
             onChange={(event) => handleChangeTitle(event.target.value)}
             onKeyDown={(event) => {
               if (event.code === "Enter") {
