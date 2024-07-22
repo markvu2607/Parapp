@@ -20,3 +20,11 @@ export const deleteDocument = async (id: Tables<"documents">["id"]) => {
   const data = await DocumentService.deleteDocument(id);
   return data;
 };
+
+export const editDocument = async (
+  id: Tables<"documents">["id"],
+  document: Omit<Partial<Tables<"documents">>, "id">
+) => {
+  const data = await DocumentService.updateDocument(id, document);
+  return data;
+};

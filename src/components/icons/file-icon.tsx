@@ -1,6 +1,6 @@
 import React, { ComponentProps } from "react";
 
-export const DocumentIcon = (props: ComponentProps<"svg">) => {
+export const FileIcon = (props: ComponentProps<"svg">) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
